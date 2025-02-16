@@ -5,10 +5,30 @@
     <button @click="login">Login</button>
 
     {{ data }}
+
+    <br />
+    {{ error }}
+
+    <br />
+    <UButton
+      label="Home"
+      color="neutral"
+      variant="outline"
+      icon="i-simple-icons-github"
+      to="/"
+    />
+    <UButton
+      label="Dashboard"
+      color="neutral"
+      variant="outline"
+      icon="i-simple-icons-github"
+      to="/dashboard"
+    />
   </div>
 </template>
 
 <script lang="ts" setup>
+// const { session, fetch } = useUserSession();
 // const config = useRuntimeConfig();
 const user = reactive({
   username: "admin",
@@ -18,21 +38,21 @@ const user = reactive({
 //   method: "POST",
 //   body: user,
 // });
-// const { execute: protectedExceute } = await useFetch(
-//   `${config.public.backendUrl}/protected`,
-//   {
-//     watch: false,
-//     immediate: false,
-//     credentials: "include", // Add this line to include credentials
-//   }
-// );
+const { execute } = await useFetch(`/api/login`, {
+  method: "POST",
+  body: user,
+  watch: false,
+  immediate: false,
+  credentials: "include", // Add this line to include credentials
+});
 const data = ref();
+const error = ref();
 const login = async () => {
   try {
-    const result = await useApiFetch(`/auth`, {
-      method: "POST",
-      body: user,
-    });
+    // const result = await useApiFetch(`/auth`, {
+    //   method: "POST",
+    //   body: user,
+    // });
     // const result = await $fetch.raw(`${config.public.backendUrl}/auth`, {
     //   method: "POST",
     //   body: user,
@@ -46,11 +66,13 @@ const login = async () => {
     // };
 
     // execution of the fetch request is done here get the protected data from the backend /protected
-    // await protectedExceute();
-
+    await execute();
+    // await fetch();
+    // useSession
     navigateTo("/");
-  } catch (error) {
-    console.error(error);
+  } catch (err) {
+    console.error(err);
+    error.value = error;
   }
 };
 </script>

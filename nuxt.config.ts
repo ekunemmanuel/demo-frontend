@@ -5,8 +5,9 @@ export default defineNuxtConfig({
     public: {
       backendUrl: process.env.BACKEND_URL,
     },
+    backendUrl: process.env.BACKEND_URL,
   },
-  modules: ["@nuxt/ui", "@nuxt/eslint"],
+  modules: ["@nuxt/ui", "@nuxt/eslint", "nuxt-auth-utils"],
 
   css: ["~/assets/css/main.css"],
 
