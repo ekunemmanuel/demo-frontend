@@ -1,4 +1,5 @@
 export default defineEventHandler(async (event) => {
+try {
   const { backendUrl } = useRuntimeConfig();
   const { username, password } = await readBody(event);
 
@@ -22,4 +23,8 @@ export default defineEventHandler(async (event) => {
   });
 
   return "Hello Nitro";
+} catch (error) {
+  console.log(error);
+  
+}
 });
