@@ -31,7 +31,7 @@ onMounted(async () => {
   try {
     const result = await useApiFetch(`/protected`, {
       credentials: "include",
-      // headers: token.value ? { cookie: token.value } : undefined,
+      headers: token.value ? { cookie: token.value } : undefined,
     });
     data.value = result;
   } catch (err) {
