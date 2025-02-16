@@ -16,10 +16,10 @@ export default defineEventHandler(async (event) => {
     appendHeader(event, "set-Cookie", cookie);
   }
 
-  // // Set the user session using nuxt-auth-utils
-  // await setUserSession(event, {
-  //   token: response.headers.get("set-cookie"),
-  // });
+  // Set the user session using nuxt-auth-utils
+  await setUserSession(event, {
+    token: response.headers.get("set-cookie"),
+  });
 
   return "Hello Nitro";
 });

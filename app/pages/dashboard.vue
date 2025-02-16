@@ -19,12 +19,12 @@
 
 <script lang="ts" setup>
 const data = ref();
-// const {
-//   session: {
-//     value: { token },
-//   },
-//   clear,
-// } = useUserSession();
+const {
+  // session: {
+  //   value: { token },
+  // },
+  clear,
+} = useUserSession();
 const error = ref();
 const token = useCookie('tokens');
 onMounted(async () => {

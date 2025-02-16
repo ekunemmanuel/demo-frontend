@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-// const { session, fetch } = useUserSession();
+const { session, fetch } = useUserSession();
 // const config = useRuntimeConfig();
 const user = reactive({
   username: "admin",
@@ -67,7 +67,7 @@ const login = async () => {
 
     // execution of the fetch request is done here get the protected data from the backend /protected
     await execute();
-    // await fetch();
+    await fetch();
     // useSession
     navigateTo("/");
   } catch (err) {

@@ -1,7 +1,7 @@
 export default defineNuxtRouteMiddleware((to, from) => {
-  // const { session } = useUserSession();
+  const { session } = useUserSession();
   const token = useCookie("tokens").value;
-  // console.log("token", session.value);
+  console.log("token", session.value);
   console.log("token", token);
   
   // const token = session.value?.token;
