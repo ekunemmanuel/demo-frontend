@@ -19,7 +19,9 @@ const data = ref();
 const error = ref();
 onMounted(async () => {
   try {
-    const result = await useApiFetch(`/protected`, {});
+    const result = await useApiFetch(`/protected`, {
+      credentials: "include",
+    });
     data.value = result;
   } catch (err) {
     console.error(err);

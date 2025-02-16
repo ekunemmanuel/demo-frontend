@@ -15,19 +15,19 @@ export function useApiFetch<DataT>(
   };
 
   // Get cookie headers
-  if (import.meta.client) {
-    const token = useCookie("token");
-    const refreshToken = useCookie("refreshToken");
+  // if (import.meta.client) {
+  //   const token = useCookie("token");
+  //   const refreshToken = useCookie("refreshToken");
 
-    Object.assign(headers, {
-      Authorization: `Bearer ${token.value}`,
-      "Refresh-Token": `Bearer ${refreshToken.value}`,
-    });
-  }
+  //   Object.assign(headers, {
+  //     Authorization: `Bearer ${token.value}`,
+  //     "Refresh-Token": `Bearer ${refreshToken.value}`,
+  //   });
+  // }
 
   return $fetch<DataT>(`${backendUrl}${url}`, {
     ...options,
-    credentials: "include",
+    // credentials: "include",
     headers,
   });
 }
